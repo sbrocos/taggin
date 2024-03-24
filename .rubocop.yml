@@ -1,0 +1,61 @@
+require:
+  - rubocop-capybara
+  - rubocop-factory_bot
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 3.2
+  NewCops: enable
+  Exclude:
+    - 'bin/**'
+    - 'db/schema.rb'
+    - 'vendor/**/*'
+    - 'config/routes/**/*'
+    - 'config/locales/**/*'
+    - 'config/initializers/**/*'
+    - 'config/application.rb'
+
+Layout/LineLength:
+  Max: 120
+
+Style/Documentation:
+  Exclude:
+    - 'app/helpers/application_helper.rb'
+    - 'app/mailers/application_mailer.rb'
+    - 'app/models/application_record.rb'
+    - 'db/migrate/**'
+    - 'test/**'
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: single_quotes
+
+Layout/AccessModifierIndentation:
+  EnforcedStyle: indent
+
+Layout/IndentationConsistency:
+  EnforcedStyle: normal
+
+Layout/EmptyLinesAroundAccessModifier:
+  EnforcedStyle: around
+
+Lint/MissingSuper:
+  Exclude:
+    - 'app/services/**/*'
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/*.rb'
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'config/environments/development.rb'
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/*.rb'
+
+RSpec/MultipleExpectations:
+  Max: 5
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 6
