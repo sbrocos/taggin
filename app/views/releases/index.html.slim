@@ -1,0 +1,12 @@
+p style="color: green" = notice
+
+.flex-auto.max-w-4xl
+  h1.text-4xl Releases
+
+#releases
+  - @releases.each do |release|
+    == render release
+    p
+      = link_to "Show this release", release
+
+= link_to "New release", new_release_path, class: 'block bg-stone-800 text-stone-100 p-2 hover:bg-stone-400'
