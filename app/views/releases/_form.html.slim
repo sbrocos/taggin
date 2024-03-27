@@ -1,26 +1,45 @@
-= form_with(model: release) do |form|
+= simple_form_for(@release, multipart: true) do |form|
   - if release.errors.any?
-    div style="color: red"
+    div.mb-5 style="color: red"
       h2 = "#{pluralize(release.errors.count, "error")} prohibited this release from being saved:"
       ul
         - release.errors.each do |error|
           li = error.full_message
 
-  div
-    = form.label :title, style: "display: block"
-    = form.text_field :title
+  .grid.grid-cols-3.gap-4
+    = render "image_preview", form: form, release: release
+    .text-help.px-4.pt-5
+      p El arte de la portada debe ser un archivo .jpg o .png cuadrado y debe ser mínimo de 3000x3000 px, máximo de 6000x6000 px, no borroso ni pixelado.
 
-  div
-    = form.label :label, style: "display: block"
-    = form.text_field :label
+      p.mt-4.font-bold No puede contener:
+      ul.list-disc.px-8.italic
+        li Logotipos de redes sociales.
+        li Logotipos de marcas.
+        li Cualquier texto excepto nombres de artistas y / o el nombre del lanzamiento.
+      p.mt-4 Si contiene algo de lo anterior, tu lanzamiento será rechazado (estas normas las establecen las tiendas y tenemos que cumplirlas).
 
-  div
-    = form.label :upc, style: "display: block"
-    = form.text_field :upc
+    .fields.pt-5
+      = form.input :title,
+              input_html: { class: 'w-full' },
+              label_html: { class: 'block' },
+              wrapper_html: { class: 'mb-5'}
 
-  div
-    = form.label :release_date, style: "display: block"
-    = form.datetime_field :release_date
+      = form.input :label,
+              input_html: { class: 'w-full' },
+              label_html: { class: 'block' },
+              wrapper_html: { class: 'mb-5'}
 
-  div
-    = form.submit
+      - if !@release.new_record?
+        div.mb-5
+          = form.input :upc,
+                  disabled: true,
+                  input_html: { class: 'w-full disabled:bg-gray-50' },
+                  label_html: { class: 'block' },
+                  wrapper_html: { class: 'mb-5' }
+
+      div.mb-5
+        = form.label :release_date, style: "display: block"
+        = form.datetime_field :release_date
+
+  div.text-end
+    = form.submit class: 'bg-stone-800 text-stone-100 p-2 hover:bg-stone-400 px-5 py-3 cursor-pointer'

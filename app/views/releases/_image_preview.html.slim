@@ -1,0 +1,9 @@
+div data-controller="previews"
+  = form.label :cover, style: "display: block"
+  = form.file_field :cover, direct_upload: true, multiple: false, class: 'hidden',
+          data: { previews_target: "input", action: "change->previews#preview" }
+  .cover-container.border.border-dashed.border-gray-900/25 data-action="click->previews#click"
+    - if @release.cover.attached?
+      = image_tag release.cover.variant(:medium), data: { previews_target: "preview" }, class: 'image', width: 400
+    - else
+      = image_tag "", data: { previews_target: "preview" }, class: "image", width: 400

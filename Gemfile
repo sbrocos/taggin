@@ -19,12 +19,14 @@ gem 'turbo-rails'
 gem 'slim-rails', '~> 3.6'
 gem 'tailwindcss-rails'
 # gem "barkick" for generate UPC codes
+gem 'simple_form'
+gem 'simple_form-tailwind'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[windows jruby]
 
 gem 'bootsnap', require: false
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
