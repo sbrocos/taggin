@@ -8,6 +8,7 @@ RSpec.describe Release do
   describe 'database columns' do
     it do
       expect(release).to have_db_column(:title).of_type(:string).with_options(null: false, default: '')
+      expect(release).to have_db_column(:artist_name).of_Type(:string).with_options(null: false, defaults: '')
       expect(release).to have_db_column(:label).of_type(:string).with_options(null: false, default: '')
       expect(release).to have_db_column(:upc).of_type(:string).with_options(null: false, default: '')
       expect(release).to have_db_column(:release_date).of_type(:datetime)
