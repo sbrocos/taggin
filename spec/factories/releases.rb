@@ -9,7 +9,7 @@ FactoryBot.define do
 
     after(:build) do |release|
       release.cover.attach(
-        io: File.open(Rails.root.join('spec', 'fixtures', 'cover.jpg')),
+        io: Rails.root.join('spec/fixtures/cover.jpg').open,
         filename: 'cover.jpg',
         content_type: 'image/jpeg'
       )
