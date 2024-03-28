@@ -54,6 +54,6 @@ class ReleasesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def release_params
-    params.require(:release).permit(:title, :label, :release_date, :cover)
+    params.require(:release).permit(%i[upc artist_name label release_date cover])
   end
 end

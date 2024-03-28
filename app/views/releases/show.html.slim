@@ -8,10 +8,14 @@ h1.text-2xl.font-bold.text-stone-800.mb-8 =< @release.title
       = image_tag @release.cover.variant(:medium)
     .info
       .grid.grid-cols-2
-        div.font-bold UPC
-        div.text-end =< @release.upc
-        div.font-bold release data
-        div.text-sm.text-end =< @release.release_date.to_fs(:short_date)
+        .text-sm.font-bold UPC
+        .text-end =< @release.upc
+        .text-sm.font-bold Artist Name
+        .text-end = @release.artist_name
+        .text-sm.font-bold Label
+        .text-end = @release.label
+        .text-sm.font-bold Release data
+        .text-sm.text-end =< @release.release_date.to_fs(:short_date)
   .column
     div.bg-stone-100.p-6
 
