@@ -1,13 +1,16 @@
-div id="#{dom_id release}"
-  p
-    strong Title:
-    =< release.title
-  p
-    strong Label:
-    =< release.label
-  p
-    strong Upc:
-    =< release.upc
-  p
-    strong Date:
-    =< release.release_date
+div id="#{dom_id release}" class="grid grid-cols-3 gap-5"
+  .cover
+    = image_tag release.cover.variant(:medium)
+  div.info
+    p
+      strong Title:
+      =< release.title
+    p
+      strong Label:
+      =< release.label
+    p
+      strong Upc:
+      =< release.upc
+    p
+      strong Date:
+      =< release.release_date

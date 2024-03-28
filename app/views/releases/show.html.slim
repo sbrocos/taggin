@@ -1,8 +1,21 @@
 p style="color: green" = notice
 
-== render @release
+h1.text-2xl.font-bold.text-stone-800.mb-8 =< @release.title
 
-div
+.grid class="grid-cols-[30%_70%] gap-5"
+  .column
+    .cover.mb-6
+      = image_tag @release.cover.variant(:medium)
+    .info
+      .grid.grid-cols-2
+        div.font-bold UPC
+        div.text-end =< @release.upc
+        div.font-bold release data
+        div.text-sm.text-end =< @release.release_date.to_fs(:short_date)
+  .column
+    div.bg-stone-100.p-6
+
+div.mt-5
   => link_to "Edit this release", edit_release_path(@release)
   '|
   =< link_to "Back to releases", releases_path

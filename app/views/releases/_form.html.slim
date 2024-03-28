@@ -32,14 +32,13 @@
       - if !@release.new_record?
         div.mb-5
           = form.input :upc,
-                  disabled: true,
                   input_html: { class: 'w-full disabled:bg-gray-50' },
                   label_html: { class: 'block' },
                   wrapper_html: { class: 'mb-5' }
 
       div.mb-5
         = form.label :release_date, style: "display: block"
-        = form.datetime_field :release_date
+        = form.date_field :release_date, class: 'w-full'
 
   div.text-end
     = form.submit class: 'bg-stone-800 text-stone-100 p-2 hover:bg-stone-400 px-5 py-3 cursor-pointer'
