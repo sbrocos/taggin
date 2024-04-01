@@ -1,0 +1,62 @@
+# frozen_string_literal: true
+
+class SongsController < ApplicationController
+  before_action :set_release, except: %i[index show]
+  before_action :set_song, only: %i[edit update destroy]
+
+  # GET /songs/new
+  def new
+    @song = ::Songs::BuildSong.run(release: @release).result
+  end
+
+  # GET /songs/1/edit
+  def edit; end
+
+  # POST /songs
+  def create
+    @song = @release.songs.new(song_params)
+
+    if @song.save
+      respond_to do |format|
+        format.html { redirect_to @release, notice: t('private.songs.created') }
+        format.turbo_stream { flash.now[:notice] = t('private.songs.created') }
+      end
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  # PATCH/PUT /songs/1
+  def update
+    if @song.update(song_params)
+      respond_to do |format|
+        format.html { redirect_to @release, notice: t('private.songs.updated'), status: :see_other }
+        format.turbo_stream { flash.now[:notice] = t('private.songs.updated') }
+      end
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  # DELETE /songs/1
+  def destroy
+    @song.destroy!
+    redirect_to songs_url, notice: 'Song was successfully destroyed.', status: :see_other
+  end
+
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_song
+    @song = @release.songs.find(params[:id])
+  end
+
+  def set_release
+    @release = Release.find(params[:release_id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def song_params
+    params.require(:song).permit(:release_id, :title, :isrc, :track_number, :disk_number, :comment, :composer)
+  end
+end

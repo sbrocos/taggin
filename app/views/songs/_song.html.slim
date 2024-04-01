@@ -1,0 +1,30 @@
+= turbo_frame_tag song do
+  div.bg-stone-100.p-6.mb-2
+    = turbo_frame_tag dom_id(song, :edit) do
+      h3.font-bold.text-lg
+        span.text-yellow-400 #{song.track_number}.
+        span.ml-2 #{song.title}
+
+      .text-sm.text-stone-600
+        span = song.release.artist_name
+        span.mx-2 -
+        span = song.release.title
+
+      - if !song.isrc.blank?
+        p
+          strong Isrc:
+          =< song.isrc
+
+      - if !song.comment.blank?
+        .my-2
+          h5.text-stone-800.font-bold.text-xs Comment:
+          =< song.comment
+
+      - if !song.composer.blank?
+        .my-2
+          h5.text-stone-800.font-bold.text-xs Composer:
+          =< song.composer
+
+      .text-end
+        => link_to 'Edit this song', edit_release_song_path(release, song),
+                class: 'bg-stone-200 hover:bg-stone-400 hover:text-white text-sm p-3'

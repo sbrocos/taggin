@@ -2,7 +2,16 @@ p style="color: green" = notice
 
 h1.text-2xl.font-bold.text-stone-800.mb-8 =< @release.title
 
-.grid class="grid-cols-[30%_70%] gap-5"
+.text-end.mb-5
+  = link_to "Back to releases", releases_path, class: 'bg-stone-800 text-stone-100 p-2 hover:bg-stone-600 p-3 mb-3 mr-3'
+  = link_to new_release_song_path(@release),
+          data: { turbo_frame: dom_id(Song.new) },
+          class: 'bg-stone-800 text-stone-100 p-2 hover:bg-green-700 p-3 mb-3' do
+    svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline-block"
+      path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"
+    span New Song
+
+.grid class="grid-cols-[30%_70%]"
   .column
     .cover.mb-6
       = image_tag @release.cover.variant(:medium)
@@ -16,12 +25,13 @@ h1.text-2xl.font-bold.text-stone-800.mb-8 =< @release.title
         .text-end = @release.label
         .text-sm.font-bold Release data
         .text-sm.text-end =< @release.release_date.to_fs(:short_date)
-  .column
-    div.bg-stone-100.p-6
+    .actions.mt-5
+      => link_to "Edit this release", edit_release_path(@release), class: 'underline-offset-1 hover:underline p-2'
+      '|
+      = button_to "Destroy this release", @release, method: :delete, class: 'inline-block underline-offset-1 hover:underline hover:text-red-600 p-2', form_class: 'inline-block'
+  .column.pl-10
+    = turbo_frame_tag Song.new
+    = turbo_frame_tag 'songs' do
+      = render @release.songs, release: @release
 
-div.mt-5
-  => link_to "Edit this release", edit_release_path(@release)
-  '|
-  =< link_to "Back to releases", releases_path
 
-  = button_to "Destroy this release", @release, method: :delete

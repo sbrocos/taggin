@@ -1,0 +1,8 @@
+h1 New song
+
+= turbo_frame_tag @song do
+  .bg-stone-100.p-6.mb-2
+    == render "form", song: @song
+
+/ div
+/   = link_to "Back to songs", songs_path

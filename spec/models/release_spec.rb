@@ -15,6 +15,12 @@ RSpec.describe Release do
     end
   end
 
+  describe 'associations' do
+    it do
+      expect(release).to have_many(:songs)
+    end
+  end
+
   describe 'validates' do
     it do
       expect(release).to validate_presence_of(:cover)

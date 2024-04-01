@@ -7,5 +7,8 @@ class Release < ApplicationRecord
     attachable.variant :medium, resize: '400x400'
   end
 
+  # Associations
+  has_many :songs
+
   validates :cover, presence: true
 end
