@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_28_173524) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_02_165854) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,7 +42,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_28_173524) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "releases", force: :cascade do |t|
+  create_table "albums", force: :cascade do |t|
     t.string "title", default: "", null: false
     t.string "label", default: "", null: false
     t.string "upc", default: "", null: false
@@ -50,10 +50,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_28_173524) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "artist_name", default: "", null: false
+    t.index ["id"], name: "index_albums_on_id"
   end
 
   create_table "songs", force: :cascade do |t|
-    t.bigint "release_id", null: false
+    t.bigint "album_id", null: false
     t.string "title", default: "", null: false
     t.string "isrc", default: "", null: false
     t.integer "track_number", default: 0, null: false
@@ -62,10 +63,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_28_173524) do
     t.string "composer", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["release_id"], name: "index_songs_on_release_id"
+    t.index ["album_id"], name: "index_songs_on_album_id"
+    t.index ["id"], name: "index_songs_on_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "songs", "releases"
+  add_foreign_key "songs", "albums"
 end

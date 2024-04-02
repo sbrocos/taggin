@@ -14,9 +14,9 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe '/releases' do
+RSpec.describe '/albums' do
   # This should return the minimal set of attributes required to create a valid
-  # Release. As you add validations to Release, be sure to
+  # Album. As you add validations to Album, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
     skip('Add a hash of attributes valid for your model')
@@ -28,7 +28,7 @@ RSpec.describe '/releases' do
 
   describe 'GET /index' do
     it 'renders a successful response' do
-      Release.create! valid_attributes
+      Album.create! valid_attributes
       get releases_url
       expect(response).to be_successful
     end
@@ -36,7 +36,7 @@ RSpec.describe '/releases' do
 
   describe 'GET /show' do
     it 'renders a successful response' do
-      release = Release.create! valid_attributes
+      release = Album.create! valid_attributes
       get release_url(release)
       expect(response).to be_successful
     end
@@ -51,7 +51,7 @@ RSpec.describe '/releases' do
 
   describe 'GET /edit' do
     it 'renders a successful response' do
-      release = Release.create! valid_attributes
+      release = Album.create! valid_attributes
       get edit_release_url(release)
       expect(response).to be_successful
     end
@@ -59,27 +59,27 @@ RSpec.describe '/releases' do
 
   describe 'POST /create' do
     context 'with valid parameters' do
-      it 'creates a new Release' do
+      it 'creates a new Album' do
         expect do
-          post releases_url, params: { release: valid_attributes }
-        end.to change(Release, :count).by(1)
+          post releases_url, params: { album: valid_attributes }
+        end.to change(Album, :count).by(1)
       end
 
       it 'redirects to the created release' do
-        post releases_url, params: { release: valid_attributes }
-        expect(response).to redirect_to(release_url(Release.last))
+        post releases_url, params: { album: valid_attributes }
+        expect(response).to redirect_to(release_url(Album.last))
       end
     end
 
     context 'with invalid parameters' do
-      it 'does not create a new Release' do
+      it 'does not create a new Album' do
         expect do
-          post releases_url, params: { release: invalid_attributes }
-        end.not_to change(Release, :count)
+          post releases_url, params: { album: invalid_attributes }
+        end.not_to change(Album, :count)
       end
 
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post releases_url, params: { release: invalid_attributes }
+        post releases_url, params: { album: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
@@ -92,15 +92,15 @@ RSpec.describe '/releases' do
       end
 
       it 'updates the requested release' do
-        release = Release.create! valid_attributes
-        patch release_url(release), params: { release: new_attributes }
+        release = Album.create! valid_attributes
+        patch release_url(release), params: { album: new_attributes }
         release.reload
         skip('Add assertions for updated state')
       end
 
       it 'redirects to the release' do
-        release = Release.create! valid_attributes
-        patch release_url(release), params: { release: new_attributes }
+        release = Album.create! valid_attributes
+        patch release_url(release), params: { album: new_attributes }
         release.reload
         expect(response).to redirect_to(release_url(release))
       end
@@ -108,8 +108,8 @@ RSpec.describe '/releases' do
 
     context 'with invalid parameters' do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        release = Release.create! valid_attributes
-        patch release_url(release), params: { release: invalid_attributes }
+        release = Album.create! valid_attributes
+        patch release_url(release), params: { album: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
@@ -117,14 +117,14 @@ RSpec.describe '/releases' do
 
   describe 'DELETE /destroy' do
     it 'destroys the requested release' do
-      release = Release.create! valid_attributes
+      release = Album.create! valid_attributes
       expect do
         delete release_url(release)
-      end.to change(Release, :count).by(-1)
+      end.to change(Album, :count).by(-1)
     end
 
-    it 'redirects to the releases list' do
-      release = Release.create! valid_attributes
+    it 'redirects to the albums list' do
+      release = Album.create! valid_attributes
       delete release_url(release)
       expect(response).to redirect_to(releases_url)
     end

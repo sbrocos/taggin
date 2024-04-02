@@ -5,12 +5,12 @@ class Song < ApplicationRecord
   has_one_attached :audio
 
   # Associations
-  belongs_to :release
+  belongs_to :album
 
   # Scopes
-  scope :ordered, -> { order(track_number: :asc, disk_number: :asc) }
+  scope :ordered, -> { order(disk_number: :asc, track_number: :asc) }
 
   def previous
-    release.songs.ordered.where('track_number < ?', track_number).where(disk_number: disk_number).last
+    album.songs.ordered.where('track_number < ?', track_number).where(disk_number: disk_number).last
   end
 end

@@ -5,13 +5,13 @@ require 'rails_helper'
 RSpec.describe 'songs/new' do
   before do
     assign(:song, Song.new(
-                    release: nil,
-                    title: 'MyString',
-                    isrc: 'MyString',
-                    track_number: 1,
-                    disk_number: 1,
-                    comment: 'MyString',
-                    composer: 'MyString'
+      album: nil,
+      title: 'MyString',
+      isrc: 'MyString',
+      track_number: 1,
+      disk_number: 1,
+      comment: 'MyString',
+      composer: 'MyString'
                   ))
   end
 

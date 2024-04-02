@@ -2,9 +2,9 @@
 
 require 'rails_helper'
 
-RSpec.describe 'releases/new' do
+RSpec.describe 'albums/new' do
   before do
-    assign(:release, Release.new(
+    assign(:album, Album.new(
                        title: 'MyString',
                        label: 'MyString',
                        upc: 'MyString'

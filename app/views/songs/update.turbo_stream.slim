@@ -4,9 +4,9 @@
 / Step 2: insert the updated date at the correct position
 - if previous = @song.previous
   = turbo_stream.after previous do
-    = render @song, release: @release
+    = render @song, album: @album
 - else
   = turbo_stream.prepend 'songs' do
-    = render @song, release: @release
+    = render @song, album: @album
 
 = turbo_stream.prepend 'flash', partial: 'layouts/flash'

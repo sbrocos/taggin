@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :song do
-    release { create(:release) }
+    album { create(:album) }
     title { 'MyString' }
     isrc { 'MyString' }
     track_number { 1 }

@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'songs/edit' do
   let(:song) do
     Song.create!(
-      release: nil,
+      album: nil,
       title: 'MyString',
       isrc: 'MyString',
       track_number: 1,

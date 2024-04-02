@@ -2,10 +2,10 @@
 
 module Songs
   class BuildSong  < ActiveInteraction::Base
-    object :release
+    object :album
 
     def execute
-      @song = @release.songs.new(track_number: new_track_number)
+      @song = @album.songs.new(track_number: new_track_number)
     end
 
     def to_model
@@ -15,9 +15,9 @@ module Songs
     private
 
     def new_track_number
-      return 1 if @release.songs.empty?
+      return 1 if @album.songs.empty?
       
-      @release.songs.ordered.last.track_number + 1
+      @album.songs.ordered.last.track_number + 1
     end
   end
 end

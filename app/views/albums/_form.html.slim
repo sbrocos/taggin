@@ -1,13 +1,13 @@
-= simple_form_for(@release, multipart: true) do |form|
-  - if release.errors.any?
+= simple_form_for(@album, multipart: true) do |form|
+  - if album.errors.any?
     div.mb-5 style="color: red"
-      h2 = "#{pluralize(release.errors.count, "error")} prohibited this release from being saved:"
+      h2 = "#{pluralize(album.errors.count, "error")} prohibited this album from being saved:"
       ul
-        - release.errors.each do |error|
+        - album.errors.each do |error|
           li = error.full_message
 
   .grid.grid-cols-3.gap-4
-    = render "image_preview", form: form, release: release
+    = render "image_preview", form: form, album: album
     .text-help.px-4.pt-5
       p El arte de la portada debe ser un archivo .jpg o .png cuadrado y debe ser mínimo de 3000x3000 px, máximo de 6000x6000 px, no borroso ni pixelado.
 
@@ -34,7 +34,7 @@
               label_html: { class: 'block' },
               wrapper_html: { class: 'mb-5'}
 
-      - if !@release.new_record?
+      - if !@album.new_record?
         div.mb-5
           = form.input :upc,
                   input_html: { class: 'w-full disabled:bg-gray-50' },

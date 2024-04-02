@@ -1,12 +1,15 @@
 en:
   private:
-    releases:
+    albums:
+      created: Album was successfully created.
+      destroyed: Album was successfully destroyed.
       edit:
-        title: Edit Release
+        title: Edit Album
       index:
-        title: Releases
+        title: Albums
       new:
-        title: New Release
+        title: New Album
+      updated: Album was successfully updated.
     songs:
       created: Song was successfully created.
       updated: Song was successfully updated.  

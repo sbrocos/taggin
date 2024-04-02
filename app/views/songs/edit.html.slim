@@ -1,7 +1,7 @@
 h1 Editing song
 
 = turbo_frame_tag dom_id(@song, :edit) do
-  = render "form", release: @release, song: @song
+  = render "form", album: @album, song: @song
 
 div
-  = link_to "Back to release", @release
+  = link_to "Back to album", @album
