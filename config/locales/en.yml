@@ -7,3 +7,7 @@ en:
         title: Releases
       new:
         title: New Release
+    songs:
+      created: Song was successfully created.
+      updated: Song was successfully updated.  
+

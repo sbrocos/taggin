@@ -54,6 +54,10 @@ Metrics/MethodLength:
   Exclude:
     - 'db/migrate/*.rb'
 
+RSpec/IndexedLet:
+  Exclude:
+    - 'spec/models/song_spec.rb'
+
 RSpec/MultipleExpectations:
   Max: 5
 
