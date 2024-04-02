@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Song < ApplicationRecord
+  # Attachments
+  has_one_attached :audio
+
   # Associations
   belongs_to :release
 

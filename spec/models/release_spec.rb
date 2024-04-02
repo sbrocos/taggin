@@ -21,6 +21,10 @@ RSpec.describe Release do
     end
   end
 
+  describe 'attachments' do
+    it { should have_one_attached(:cover) }
+  end
+
   describe 'validates' do
     it do
       expect(release).to validate_presence_of(:cover)
