@@ -2,15 +2,15 @@
 
 require 'rails_helper'
 
-RSpec.describe 'releases/index' do
+RSpec.describe 'albums/index' do
   before do
-    assign(:releases, [
-             Release.create!(
+    assign(:albums, [
+      Album.create!(
                title: 'Title',
                label: 'Label',
                upc: 'Upc'
              ),
-             Release.create!(
+      Album.create!(
                title: 'Title',
                label: 'Label',
                upc: 'Upc'
@@ -18,7 +18,7 @@ RSpec.describe 'releases/index' do
            ])
   end
 
-  it 'renders a list of releases' do
+  it 'renders a list of albums' do
     render
     cell_selector = Rails::VERSION::STRING >= '7' ? 'div>p' : 'tr>td'
     assert_select cell_selector, text: Regexp.new('Title'.to_s), count: 2

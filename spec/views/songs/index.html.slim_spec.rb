@@ -6,7 +6,7 @@ RSpec.describe 'songs/index' do
   before do
     assign(:songs, [
              Song.create!(
-               release: nil,
+               album: nil,
                title: 'Title',
                isrc: 'Isrc',
                track_number: 2,
@@ -15,7 +15,7 @@ RSpec.describe 'songs/index' do
                composer: 'Composer'
              ),
              Song.create!(
-               release: nil,
+               album: nil,
                title: 'Title',
                isrc: 'Isrc',
                track_number: 2,

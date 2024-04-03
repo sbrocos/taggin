@@ -6,13 +6,13 @@
         span.ml-2 #{song.title}
 
       .text-sm.text-stone-600
-        span = song.release.artist_name
+        span = song.album.artist_name
         span.mx-2 -
-        span = song.release.title
+        span = song.album.title
 
       - if !song.isrc.blank?
         p
-          strong Isrc:
+          strong ISRC
           =< song.isrc
 
       - if !song.comment.blank?
@@ -26,5 +26,5 @@
           =< song.composer
 
       .text-end
-        => link_to 'Edit this song', edit_release_song_path(release, song),
+        => link_to 'Edit this song', edit_album_song_path(album, song),
                 class: 'bg-stone-200 hover:bg-stone-400 hover:text-white text-sm p-3'

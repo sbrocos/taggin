@@ -1,0 +1,14 @@
+p style="color: green" = notice
+
+.flex.flex-shrink
+  .lg:flex-grow
+    h1.text-3xl.font-bold.text-stone-600.text-stone-600.relative.top-2  = t('private.albums.index.title')
+  .flex.block.text-end.border-t.inline-block.align-middle.mt-2
+    = link_to "New album", new_album_path, class: 'block bg-stone-800 text-stone-100 p-2 hover:bg-stone-400'
+
+#albums.grid.grid-cols-3.gap-5
+  - @albums.each do |album|
+    .bg-stone-800.text-stone-100 id="#{dom_id album}"
+      == render album
+      .mt-5.text-center
+        = link_to "Show this album", album, class: 'block p-3 hover:bg-stone-700'

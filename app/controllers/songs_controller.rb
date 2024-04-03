@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class SongsController < ApplicationController
-  before_action :set_release, except: %i[index show]
+  before_action :set_album, except: %i[index show]
   before_action :set_song, only: %i[edit update destroy]
 
   # GET /songs/new
   def new
-    @song = ::Songs::BuildSong.run(release: @release).result
+    @song = ::Songs::BuildSong.run(album: @album).result
   end
 
   # GET /songs/1/edit
@@ -14,11 +14,11 @@ class SongsController < ApplicationController
 
   # POST /songs
   def create
-    @song = @release.songs.new(song_params)
+    @song = @album.songs.new(song_params)
 
     if @song.save
       respond_to do |format|
-        format.html { redirect_to @release, notice: t('private.songs.created') }
+        format.html { redirect_to @album, notice: t('private.songs.created') }
         format.turbo_stream { flash.now[:notice] = t('private.songs.created') }
       end
     else
@@ -30,7 +30,7 @@ class SongsController < ApplicationController
   def update
     if @song.update(song_params)
       respond_to do |format|
-        format.html { redirect_to @release, notice: t('private.songs.updated'), status: :see_other }
+        format.html { redirect_to @album, notice: t('private.songs.updated'), status: :see_other }
         format.turbo_stream { flash.now[:notice] = t('private.songs.updated') }
       end
     else
@@ -48,15 +48,15 @@ class SongsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_song
-    @song = @release.songs.find(params[:id])
+    @song = @album.songs.find(params[:id])
   end
 
-  def set_release
-    @release = Release.find(params[:release_id])
+  def set_album
+    @album = Album.find(params[:album_id])
   end
 
   # Only allow a list of trusted parameters through.
   def song_params
-    params.require(:song).permit(:release_id, :title, :isrc, :track_number, :disk_number, :comment, :composer)
+    params.require(:song).permit(:album_id, :title, :isrc, :track_number, :disk_number, :comment, :composer)
   end
 end

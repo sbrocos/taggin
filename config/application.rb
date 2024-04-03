@@ -14,7 +14,6 @@ module Taggin
     config.generators do |generate|
       generate.helper false
       generate.template_engine :slim
-      # generate.orm :active_record, primary_key_type: :uuid
     end
     config.active_storage.variant_processor = :mini_magick
   end

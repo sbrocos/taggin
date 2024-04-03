@@ -28,6 +28,7 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 gem 'bootsnap', require: false
 gem 'image_processing', '~> 1.2'
 gem 'active_interaction', '~> 5.3'
+gem 'active_storage_validations'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -37,6 +38,7 @@ group :development, :test do
   gem 'faker'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 6.0'
+  gem 'rubocop', require: false
 end
 
 group :development do

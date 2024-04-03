@@ -3,8 +3,8 @@ p style="color: green" = notice
 == render @song
 
 div
-  => link_to "Edit this song", edit_release_song_path(@release, @song)
+  => link_to "Edit this song", edit_album_song_path(@album, @song)
   '|
-  =< link_to "Back to songs", release_path(@release)
+  =< link_to "Back to songs", album_path(@album)
 
   = button_to "Destroy this song", @song, method: :delete
