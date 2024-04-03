@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_03_061119) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_28_173524) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,13 +44,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_061119) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title", default: "", null: false
+    t.string "artist_name", default: "", null: false
     t.string "label", default: "", null: false
     t.string "upc", default: "", null: false
     t.datetime "release_date", precision: nil
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "artist_name", default: "", null: false
-    t.index ["id"], name: "index_albums_on_id"
   end
 
   create_table "songs", force: :cascade do |t|
@@ -64,7 +63,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_061119) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["album_id"], name: "index_songs_on_album_id"
-    t.index ["id"], name: "index_songs_on_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
