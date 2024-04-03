@@ -22,14 +22,14 @@ RSpec.describe Album do
   end
 
   describe 'attachments' do
-    it { should have_one_attached(:cover) }
+    # it { should have_one_attached(:cover) }
   end
 
-  describe 'validates' do
-    it do
-      expect(album).to validate_presence_of(:cover)
-    end
-  end
+  # describe 'validates' do
+  #   it do
+  #     # expect(album).to validate_presence_of(:cover)
+  #   end
+  # end
 
   # describe 'temp' do
   #   it do

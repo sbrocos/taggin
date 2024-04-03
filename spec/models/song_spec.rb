@@ -5,8 +5,7 @@ require 'rails_helper'
 RSpec.describe Song do
   subject(:song) { create(:song, album: album) }
 
-  let(:album) { create :album }
-  before { album.reload }
+  let(:album) {  create :album }
 
   # rubocop:disable RSpec/ExampleLength, RSpec/MultipleExpectations
   describe 'database columns' do
@@ -39,38 +38,37 @@ RSpec.describe Song do
       let(:song2) { create(:song, track_number: 2, album: album) }
 
       it 'returns array with correct ordered songs' do
-        binding.pry
         expect(ordered).to eq([song, song2])
       end
     end
 
-    # context 'when you have two disc and the same track number' do
-    #   let(:song1) { create(:song, track_number: 1, disk_number: 1) }
-    #   let(:song2) { create(:song, track_number: 1, disk_number: 2) }
-    #
-    #   it 'returns array with ordered by track and disc' do
-    #     expect(ordered).to eq([song1, song2])
-    #   end
-    # end
+    context 'when you have two disc and the same track number' do
+      let(:song1) { create(:song, track_number: 1, disk_number: 1) }
+      let(:song2) { create(:song, track_number: 1, disk_number: 2) }
+
+      it 'returns array with ordered by track and disc' do
+        expect(ordered).to eq([song1, song2])
+      end
+    end
   end
-  #
-  # describe '.previous' do
-  #   subject(:previous) { song.previous }
-  #
-  #   let(:album) { create(:album) }
-  #   let(:song) { create(:song, track_number: 3, album:) }
-  #   let(:song2) { create(:song, track_number: 2, album:) }
-  #
-  #   before do
-  #     song2
-  #     create(:song, track_number: 1, album:)
-  #     create(:song, track_number: 1, album:)
-  #     create(:song, track_number: 2, album:, disk_number: 2)
-  #     create(:song, track_number: 2)
-  #   end
-  #
-  #   it 'returns song with track number 2 of the same album and same disk' do
-  #     expect(previous).to eq(song2)
-  #   end
-  # end
+
+  describe '.previous' do
+    subject(:previous) { song.previous }
+
+    let(:album) { create(:album) }
+    let(:song) { create(:song, track_number: 3, album:) }
+    let(:song2) { create(:song, track_number: 2, album:) }
+
+    before do
+      song2
+      create(:song, track_number: 1, album:)
+      create(:song, track_number: 1, album:)
+      create(:song, track_number: 2, album:, disk_number: 2)
+      create(:song, track_number: 2)
+    end
+
+    it 'returns song with track number 2 of the same album and same disk' do
+      expect(previous).to eq(song2)
+    end
+  end
 end

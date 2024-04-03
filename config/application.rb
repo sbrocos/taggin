@@ -16,6 +16,6 @@ module Taggin
       generate.template_engine :slim
       # generate.orm :active_record, primary_key_type: :uuid
     end
-    config.active_storage.variant_processor = :mini_magick
+    # config.active_storage.variant_processor = :vips
   end
 end

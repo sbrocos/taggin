@@ -6,14 +6,15 @@ FactoryBot.define do
     label { 'MyString' }
     upc { 'MyString' }
     release_date { '2024-03-24 13:14:12' }
-    cover { Rack::Test::UploadedFile.new(Rails.root.join('spec', 'fixtures', 'cover.jpg')) }
 
-    # after(:build) do |album|
-    #   album.cover.attach(
-    #     io: File.open(),
-    #     filename: 'cover.jpg',
-    #     content_type: 'image/jpeg'
-    #   )
-    # end
+    after(:build) do |album|
+      file_name = 'cover.jpg'
+      file_path = Rails.root.join('spec', 'support', 'fixtures', file_name)
+      album.cover.attach = ActiveStorage::Blob.create_and_upload!(
+        io: File.open(file_path),
+        filename: file_name,
+        content_type: 'image/jpeg'
+      )
+    end
   end
 end

@@ -10,5 +10,11 @@ class Album < ApplicationRecord
   # Associations
   has_many :songs
 
-  validates :cover, presence: true
+  # validate :acceptable_cover
+
+  private
+
+  def acceptable_cover
+    return unless cover.attached?
+  end
 end
