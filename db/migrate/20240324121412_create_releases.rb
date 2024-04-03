@@ -2,7 +2,7 @@
 
 class CreateReleases < ActiveRecord::Migration[7.1]
   def change
-    create_table :albums do |t|
+    create_table :releases do |t|
       t.string :title, null: false, default: ''
       t.string :label, null: false, default: ''
       t.string :upc, null: false, default: ''
