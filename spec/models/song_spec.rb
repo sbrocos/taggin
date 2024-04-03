@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe Song do
-  subject(:song) { create(:song, album: album) }
+  subject(:song) { create(:song, album:) }
 
-  let(:album) {  create :album }
+  let(:album) {  create(:album) }
 
   # rubocop:disable RSpec/ExampleLength, RSpec/MultipleExpectations
   describe 'database columns' do
@@ -35,7 +35,7 @@ RSpec.describe Song do
 
     context 'when have only one disc' do
       let(:song1) { create(:song, track_number: 1) }
-      let(:song2) { create(:song, track_number: 2, album: album) }
+      let(:song2) { create(:song, track_number: 2, album:) }
 
       it 'returns array with correct ordered songs' do
         expect(ordered).to eq([song, song2])

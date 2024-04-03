@@ -38,5 +38,6 @@ en:
       updated: Album was successfully updated.
     songs:
       created: Song was successfully created.
+      destroyed: Song was successfully destroyed.
       updated: Song was successfully updated.  
 

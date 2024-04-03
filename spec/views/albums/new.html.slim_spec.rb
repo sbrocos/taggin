@@ -5,10 +5,10 @@ require 'rails_helper'
 RSpec.describe 'albums/new' do
   before do
     assign(:album, Album.new(
-                       title: 'MyString',
-                       label: 'MyString',
-                       upc: 'MyString'
-                     ))
+                     title: 'MyString',
+                     label: 'MyString',
+                     upc: 'MyString'
+                   ))
   end
 
   it 'renders new release form' do

@@ -5,10 +5,10 @@ require 'rails_helper'
 RSpec.describe 'albums/show' do
   before do
     assign(:album, Album.create!(
-                       title: 'Title',
-                       label: 'Label',
-                       upc: 'Upc'
-                     ))
+                     title: 'Title',
+                     label: 'Label',
+                     upc: 'Upc'
+                   ))
   end
 
   it 'renders attributes in <p>' do

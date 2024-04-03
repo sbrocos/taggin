@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
+# Controller for CRUD actions of songs
 class SongsController < ApplicationController
-  before_action :set_album, except: %i[index show]
+  before_action :set_album
   before_action :set_song, only: %i[edit update destroy]
 
   # GET /songs/new
@@ -41,7 +42,7 @@ class SongsController < ApplicationController
   # DELETE /songs/1
   def destroy
     @song.destroy!
-    redirect_to songs_url, notice: 'Song was successfully destroyed.', status: :see_other
+    redirect_to songs_url, notice: t('priavet.songs.destroyed'), status: :see_other
   end
 
   private

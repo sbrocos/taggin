@@ -8,13 +8,12 @@ class Album < ApplicationRecord
   end
 
   # Associations
-  has_many :songs
+  has_many :songs, dependent: :destroy
 
   # Validations
   validates :title, :artist_name, presence: true
   validates :cover, attached: true,
-            content_type: [:png, :jpg, :jpeg],
-            aspect_ratio: :square,
-            dimension: { width: { min: 1600, max: 3000 } }
-
+                    content_type: %i[png jpg jpeg],
+                    aspect_ratio: :square,
+                    dimension: { width: { min: 1600, max: 3000 } }
 end

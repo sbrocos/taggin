@@ -9,10 +9,10 @@ gem 'jsbundling-rails'
 gem 'pg', '~> 1.1'
 gem 'puma', '>= 5.0'
 gem 'rails', '~> 7.1.3'
+gem 'redis', '>= 4.0.1'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
-gem "redis", ">= 4.0.1"
 # gem "kredis"
 # gem "bcrypt", "~> 3.1.7"
 
@@ -25,10 +25,10 @@ gem 'simple_form-tailwind'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[windows jruby]
 
-gem 'bootsnap', require: false
-gem 'image_processing', '~> 1.2'
 gem 'active_interaction', '~> 5.3'
 gem 'active_storage_validations'
+gem 'bootsnap', require: false
+gem 'image_processing', '~> 1.2'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

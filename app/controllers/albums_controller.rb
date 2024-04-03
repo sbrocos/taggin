@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Controller class to CRUD actions of Ablums
 class AlbumsController < ApplicationController
   before_action :set_album, only: %i[show edit update destroy]
 

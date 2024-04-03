@@ -5,12 +5,12 @@ require 'rails_helper'
 RSpec.describe 'albums/index' do
   before do
     assign(:albums, [
-      Album.create!(
+             Album.create!(
                title: 'Title',
                label: 'Label',
                upc: 'Upc'
              ),
-      Album.create!(
+             Album.create!(
                title: 'Title',
                label: 'Label',
                upc: 'Upc'
