@@ -34,12 +34,11 @@
               label_html: { class: 'block' },
               wrapper_html: { class: 'mb-5'}
 
-      - if !@album.new_record?
-        div.mb-5
-          = form.input :upc,
-                  input_html: { class: 'w-full disabled:bg-gray-50' },
-                  label_html: { class: 'block' },
-                  wrapper_html: { class: 'mb-5' }
+      div.mb-5
+        = form.input :upc,
+                input_html: { class: 'w-full disabled:bg-gray-50' },
+                label_html: { class: 'block' },
+                wrapper_html: { class: 'mb-5' }
 
       div.mb-5
         = form.label :release_date, style: "display: block"

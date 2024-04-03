@@ -10,11 +10,11 @@ class Album < ApplicationRecord
   # Associations
   has_many :songs
 
-  # validate :acceptable_cover
+  # Validations
+  validates :title, :artist_name, presence: true
+  validates :cover, attached: true,
+            content_type: [:png, :jpg, :jpeg],
+            aspect_ratio: :square,
+            dimension: { width: { min: 1600, max: 3000 } }
 
-  private
-
-  def acceptable_cover
-    return unless cover.attached?
-  end
 end

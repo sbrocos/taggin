@@ -54,6 +54,6 @@ class AlbumsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def album_params
-    params.require(:album).permit(%i[upc artist_name label release_date cover])
+    params.require(:album).permit(%i[title upc artist_name label release_date cover])
   end
 end

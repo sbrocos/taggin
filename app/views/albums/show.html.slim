@@ -12,23 +12,12 @@ h1.text-2xl.font-bold.text-stone-800.mb-8 =< @album.title
     span New Song
 
 .grid class="grid-cols-[30%_70%]"
-  .column
-    .cover.mb-6
-      = image_tag @album.cover.variant(:medium)
-    .info
-      .grid.grid-cols-2
-        .text-sm.font-bold UPC
-        .text-end =< @album.upc
-        .text-sm.font-bold Artist Name
-        .text-end = @album.artist_name
-        .text-sm.font-bold Label
-        .text-end = @album.label
-        .text-sm.font-bold Album data
-        .text-sm.text-end =< @album.release_date.to_fs(:short_date)
-    .actions.mt-5
+  .column.bg-stone-800.text-stone-100
+    == render @album
+    .actions.mt-5.text-center
       => link_to "Edit this album", edit_album_path(@album), class: 'underline-offset-1 hover:underline p-2'
       '|
-      = button_to "Destroy this albume", @album, method: :delete, class: 'inline-block underline-offset-1 hover:underline hover:text-red-600 p-2', form_class: 'inline-block'
+      = button_to "Destroy this album", @album, method: :delete, class: 'inline-block underline-offset-1 hover:underline hover:text-red-600 p-2', form_class: 'inline-block'
   .column.pl-10
     = turbo_frame_tag Song.new
     = turbo_frame_tag 'songs' do

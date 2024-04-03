@@ -6,10 +6,9 @@ p style="color: green" = notice
   .flex.block.text-end.border-t.inline-block.align-middle.mt-2
     = link_to "New album", new_album_path, class: 'block bg-stone-800 text-stone-100 p-2 hover:bg-stone-400'
 
-#albums
+#albums.grid.grid-cols-3.gap-5
   - @albums.each do |album|
-    == render album
-    p
-      = link_to "Show this album", album
-
-
+    .bg-stone-800.text-stone-100 id="#{dom_id album}"
+      == render album
+      .mt-5.text-center
+        = link_to "Show this album", album, class: 'block p-3 hover:bg-stone-700'

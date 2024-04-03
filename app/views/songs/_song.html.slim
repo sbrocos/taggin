@@ -12,7 +12,7 @@
 
       - if !song.isrc.blank?
         p
-          strong Isrc:
+          strong ISRC
           =< song.isrc
 
       - if !song.comment.blank?
@@ -26,5 +26,5 @@
           =< song.composer
 
       .text-end
-        => link_to 'Edit this song', edit_albume_song_path(album, song),
+        => link_to 'Edit this song', edit_album_song_path(album, song),
                 class: 'bg-stone-200 hover:bg-stone-400 hover:text-white text-sm p-3'
