@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Song do
   subject(:song) { create(:song, album:) }
 
-  let(:album) {  create(:album) }
+  let(:album) { create(:album) }
 
   # rubocop:disable RSpec/ExampleLength, RSpec/MultipleExpectations
   describe 'database columns' do

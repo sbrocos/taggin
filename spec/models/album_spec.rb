@@ -16,20 +16,12 @@ RSpec.describe Album do
   end
 
   describe 'associations' do
-    it do
-      expect(album).to have_many(:songs)
-    end
+    it { expect(album).to have_many(:songs) }
   end
 
-  # describe 'validates' do
-  #   it do
-  #     # expect(album).to validate_presence_of(:cover)
-  #   end
-  # end
-
-  # describe 'temp' do
-  #   it do
-  #     binding.pry
-  #   end
-  # end
+  describe 'validates' do
+    it { is_expected.to validate_presence_of(:title) }
+    it { is_expected.to validate_presence_of(:artist_name) }
+    it { is_expected.to validate_presence_of(:cover) }
+  end
 end

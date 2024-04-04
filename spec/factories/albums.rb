@@ -7,6 +7,6 @@ FactoryBot.define do
     label { 'MyString' }
     upc { 'MyString' }
     release_date { '2024-03-24 13:14:12' }
-    cover { Rack::Test::UploadedFile.new(Rails.root.join('spec', 'support', 'fixtures', 'cover2.jpg')) }
+    cover { File.open('spec/fixtures/files/cover.jpg') }
   end
 end
