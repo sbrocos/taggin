@@ -30,11 +30,19 @@ RSpec.describe Song do
   #   it { should have_one_attached(:audio) }
   # end
 
+  describe 'validates' do
+    it do
+      expect(album).to validate_presence_of(:title)
+      expect(album).to validate_presence_of(:artist_name)
+    end
+  end
+
   describe '#ordered' do
     subject(:ordered) { described_class.ordered }
 
+
     context 'when have only one disc' do
-      let(:song1) { create(:song, track_number: 1) }
+      let(:song1) { create(:song, track_number: 1, album:) }
       let(:song2) { create(:song, track_number: 2, album:) }
 
       it 'returns array with correct ordered songs' do
@@ -43,8 +51,8 @@ RSpec.describe Song do
     end
 
     context 'when you have two disc and the same track number' do
-      let(:song1) { create(:song, track_number: 1, disk_number: 1) }
-      let(:song2) { create(:song, track_number: 1, disk_number: 2) }
+      let(:song1) { create(:song, track_number: 1, disk_number: 1, album:) }
+      let(:song2) { create(:song, track_number: 1, disk_number: 2, album:) }
 
       it 'returns array with ordered by track and disc' do
         expect(ordered).to eq([song1, song2])

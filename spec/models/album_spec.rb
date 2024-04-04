@@ -21,15 +21,16 @@ RSpec.describe Album do
     end
   end
 
-  # describe 'validates' do
-  #   it do
-  #     # expect(album).to validate_presence_of(:cover)
-  #   end
-  # end
+  describe 'validates' do
+    it do
+      expect(album).to validate_presence_of(:title)
+      expect(album).to validate_presence_of(:artist_name)
+    end
 
-  # describe 'temp' do
-  #   it do
-  #     binding.pry
-  #   end
-  # end
+    it { is_expected.to validate_attached_of(:cover) }
+    # it { is_expected.to validate_aspect_ratio_of(:cover).allowing(:square) }
+    it { is_expected.to validate_dimensions_of(:cover).width_min(400) }
+    it { is_expected.to validate_dimensions_of(:cover).width_max(1200) }
+    it { is_expected.to validate_content_type_of(:cover).allowing('image/png', 'image/jpeg') }
+  end
 end
