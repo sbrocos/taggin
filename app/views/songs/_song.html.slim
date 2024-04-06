@@ -2,7 +2,7 @@
   div.bg-stone-100.p-6.mb-2
     = turbo_frame_tag dom_id(song, :edit) do
       h3.font-bold.text-lg
-        span.text-yellow-400 #{song.track_number}.
+        span.text-yellow-400 = format '%02d.', song.track_number
         span.ml-2 #{song.title}
       .text-sm.text-stone-600
         span = song.album.artist_name
@@ -20,6 +20,7 @@
         .my-2
           h5.text-stone-800.font-bold.text-xs Composer:
           =< song.composer
+
       .grid.grid-cols-2.mt-6
         .mini-player
           button[type="button" data-action="sound#playPosition" data-sound-position-param='#{song.track_number - 1}' class="me-2 align-middle"]
