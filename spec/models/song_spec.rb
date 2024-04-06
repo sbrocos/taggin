@@ -26,9 +26,13 @@ RSpec.describe Song do
     end
   end
 
-  # describe 'attachments' do
-  #   it { should have_one_attached(:audio) }
-  # end
+  describe 'attachments' do
+    it { should have_one_attached(:audio) }
+  end
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:title) }
+  end
 
   describe '#ordered' do
     subject(:ordered) { described_class.ordered }
