@@ -26,6 +26,7 @@ gem 'simple_form-tailwind'
 gem 'tzinfo-data', platforms: %i[windows jruby]
 
 gem 'active_interaction', '~> 5.3'
+gem 'activestorage-validator'
 gem 'active_storage_validations'
 gem 'bootsnap', require: false
 gem 'image_processing', '~> 1.2'

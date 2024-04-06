@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import PreviewsController from "./previews_controller"
 application.register("previews", PreviewsController)
+
+import SoundController from "./sound_controller"
+application.register("sound", SoundController)
