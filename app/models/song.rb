@@ -11,11 +11,18 @@ class Song < ApplicationRecord
   # Scopes
   scope :ordered, -> { order(disk_number: :asc, track_number: :asc) }
 
+  # delegation
+  delegate :artist_name, to: :album
+
   # Validations
   validates :title, presence: true
   validates :audio, blob: { content_type: %w[audio/mpeg] }
 
   def previous
     album.songs.ordered.where('track_number < ?', track_number).where(disk_number:).last
+  end
+
+  def year
+    album.release_date.year
   end
 end
