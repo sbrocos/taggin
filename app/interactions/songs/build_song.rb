@@ -7,7 +7,7 @@ module Songs
     object :album
 
     def execute
-      @song = @album.songs.new(track_number: new_track_number)
+      @song = @album.songs.new(track_number: new_track_number, year: set_year)
     end
 
     def to_model
@@ -20,6 +20,10 @@ module Songs
       return 1 if @album.songs.empty?
 
       @album.songs.ordered.last.track_number + 1
+    end
+
+    def set_year
+      @album.release_date.year
     end
   end
 end

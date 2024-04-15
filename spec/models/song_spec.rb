@@ -16,6 +16,7 @@ RSpec.describe Song do
       expect(song).to have_db_column(:disk_number).of_type(:integer).with_options(null: false, default: 1)
       expect(song).to have_db_column(:comment).of_type(:string).with_options(null: false, default: '')
       expect(song).to have_db_column(:composer).of_type(:string).with_options(null: false, default: '')
+      expect(song).to have_db_column(:year).of_type(:integer).with_options(null: false, default: 0)
     end
   end
   # rubocop:enable RSpec/ExampleLength, RSpec/MultipleExpectations
@@ -79,11 +80,15 @@ RSpec.describe Song do
     end
   end
 
-  describe '.year' do
+  describe 'initialize' do
     subject(:year) { song.year }
 
     let(:album) { create(:album, release_date: '2023/06/30'.to_datetime) }
     
-    it { expect(year).to eq 2023 }
+    context 'when don\'t define the year' do
+      it 'returns the year of the release_date of album' do
+        expect(year).to eq 2023
+      end
+    end
   end
 end
