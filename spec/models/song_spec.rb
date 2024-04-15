@@ -28,7 +28,7 @@ RSpec.describe Song do
   end
 
   describe 'attachments' do
-    it { should have_one_attached(:audio) }
+    it { is_expected.to have_one_attached(:audio) }
   end
 
   describe 'validations' do
@@ -36,7 +36,7 @@ RSpec.describe Song do
   end
 
   describe 'delegations' do
-    it { is_expected.to delegate_method(:artist_name).to(:album)}
+    it { is_expected.to delegate_method(:artist_name).to(:album) }
   end
 
   describe '#ordered' do
@@ -84,7 +84,7 @@ RSpec.describe Song do
     subject(:year) { song.year }
 
     let(:album) { create(:album, release_date: '2023/06/30'.to_datetime) }
-    
+
     context 'when don\'t define the year' do
       it 'returns the year of the release_date of album' do
         expect(year).to eq 2023

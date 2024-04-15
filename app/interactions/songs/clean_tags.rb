@@ -5,7 +5,7 @@ require 'taglib'
 module Songs
   class CleanTags < ActiveInteraction::Base
     string :path
-    
+
     def execute
       TagLib::MPEG::File.open(path) do |file|
         tag = file.id3v2_tag
@@ -17,7 +17,7 @@ module Songs
         tag.year = 0
         tag.genre = ''
         tag.comment = ''
-        file.save    
+        file.save
       end
     end
   end
