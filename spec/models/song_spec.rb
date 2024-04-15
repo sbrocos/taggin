@@ -34,6 +34,10 @@ RSpec.describe Song do
     it { is_expected.to validate_presence_of(:title) }
   end
 
+  describe 'delegations' do
+    it { is_expected.to delegate_method(:artist_name).to(:album)}
+  end
+
   describe '#ordered' do
     subject(:ordered) { described_class.ordered }
 
@@ -59,7 +63,6 @@ RSpec.describe Song do
   describe '.previous' do
     subject(:previous) { song.previous }
 
-    let(:album) { create(:album) }
     let(:song) { create(:song, track_number: 3, album:) }
     let(:song2) { create(:song, track_number: 2, album:) }
 
@@ -74,5 +77,13 @@ RSpec.describe Song do
     it 'returns song with track number 2 of the same album and same disk' do
       expect(previous).to eq(song2)
     end
+  end
+
+  describe '.year' do
+    subject(:year) { song.year }
+
+    let(:album) { create(:album, release_date: '2023/06/30'.to_datetime) }
+    
+    it { expect(year).to eq 2023 }
   end
 end
