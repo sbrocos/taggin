@@ -2,6 +2,9 @@
 
 # Model Song
 class Song < ApplicationRecord
+  # Callbacks
+  before_save :year_from_album
+
   # Attachments
   has_one_attached :audio, dependent: :destroy
 
@@ -22,7 +25,11 @@ class Song < ApplicationRecord
     album.songs.ordered.where('track_number < ?', track_number).where(disk_number:).last
   end
 
-  def year
-    album.release_date.year
+  private
+
+  def year_from_album
+    return if year != 0
+
+    self.year = album.release_date.year
   end
 end

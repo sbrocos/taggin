@@ -20,5 +20,13 @@ RSpec.describe Songs::BuildSong, type: :interaction do
         expect(result.track_number).to eq(2)
       end
     end
+
+    context 'when album has release date' do
+      let(:album) { create(:album, release_date: '2023/06/30'.to_datetime) }
+
+      it 'returns the year of the release_date of album' do
+        expect(result.year).to eq 2023
+      end
+    end
   end
 end

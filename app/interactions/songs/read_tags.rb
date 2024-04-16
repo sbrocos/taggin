@@ -17,12 +17,12 @@ module Songs
         result[:album] = tag.album
         result[:track_number] = tag.track
         result[:mime_type] = cover&.mime_type || ''
-        result[:cover] = cover&.picture 
+        result[:cover] = cover&.picture
         result[:year] = tag.year
         result[:genre] = tag.genre
         result[:comment] = tag.comment
-        result[:original] = properties&.original? 
-        result[:copyright] = properties&.copyrighted? 
+        result[:original] = properties&.original?
+        result[:copyright] = properties&.copyrighted?
       end
 
       result

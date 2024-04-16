@@ -6,7 +6,7 @@ div[data-controller="sound" ]
   .text-end.mb-5
     = link_to "Back to albums", albums_path, class: 'bg-stone-800 text-stone-100 p-2 hover:bg-stone-600 p-3 mb-3 mr-3'
     = link_to new_album_song_path(@album),
-            data: { turbo_frame: dom_id(Song.new) },
+            data: { turbo_frame: dom_id(::Songs::BuildSong.run(album: @album).result) },
             class: 'bg-stone-800 text-stone-100 p-2 hover:bg-green-700 p-3 mb-3' do
       svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline-block"
         path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"
@@ -20,7 +20,7 @@ div[data-controller="sound" ]
         '|
         = button_to "Destroy this album", @album, method: :delete, class: 'inline-block underline-offset-1 hover:underline hover:text-red-600 p-2', form_class: 'inline-block'
     .column.pl-10
-      = turbo_frame_tag Song.new
+      = turbo_frame_tag ::Songs::BuildSong.run(album: @album).result
       = turbo_frame_tag 'songs' do
         = render @album.songs.ordered, album: @album
 
