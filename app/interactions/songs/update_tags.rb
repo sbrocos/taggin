@@ -3,6 +3,7 @@
 require 'taglib'
 
 module Songs
+  # Interaction to update the ID3v2 tags from a mp3 file
   class UpdateTags < ActiveInteraction::Base
     object :song
 

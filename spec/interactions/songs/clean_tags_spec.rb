@@ -6,16 +6,13 @@ RSpec.describe Songs::CleanTags, type: :interaction do
   describe 'execute' do
     before do
       original_path = "#{file_fixture_path}/audios/with_tags/01_seed_of_an_idea.mp3"
-      @destiny_path = Rails.root.join('tmp/songs/song.mp3').to_s
-      FileUtils.cp(original_path, @destiny_path)
+      FileUtils.cp(original_path, path)
     end
 
-    after do
-      FileUtils.rm @destiny_path
-    end
+    after { FileUtils.rm(path) }
 
-    let(:path) { '' }
-    let(:inputs) { { path: @destiny_path } }
+    let(:path) { Rails.root.join('tmp/songs/song.mp3').to_s }
+    let(:inputs) { { path: } }
     let(:empty_hash) do
       {
         title: '', artist: '', album: '', track_number: 0, mime_type: '', cover: nil, year: 0, genre: '',

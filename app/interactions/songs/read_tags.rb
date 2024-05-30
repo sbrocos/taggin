@@ -3,9 +3,11 @@
 require 'taglib'
 
 module Songs
+  # Interaction to read the ID3v2 tags from a mp3 file
   class ReadTags < ActiveInteraction::Base
     string :path
 
+    # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     def execute
       result = {}
       TagLib::MPEG::File.open(path) do |file|
@@ -27,5 +29,6 @@ module Songs
 
       result
     end
+    # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
   end
 end

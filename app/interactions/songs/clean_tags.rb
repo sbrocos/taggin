@@ -3,9 +3,11 @@
 require 'taglib'
 
 module Songs
+  # Interaction to clean the ID3v2 tags of a mp3 file
   class CleanTags < ActiveInteraction::Base
     string :path
 
+    # rubocop:disable Metrics/MethodLength
     def execute
       TagLib::MPEG::File.open(path) do |file|
         tag = file.id3v2_tag
@@ -20,5 +22,6 @@ module Songs
         file.save
       end
     end
+    # rubocop:enable Metrics/MethodLength
   end
 end
