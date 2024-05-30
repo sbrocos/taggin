@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    attributes:
+      album:
+        label: Name Label
+        upc: UPC
+      song:
+        isrc: ISRC
