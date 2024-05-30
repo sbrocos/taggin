@@ -7,6 +7,8 @@ module Songs
   class CleanTags < ActiveInteraction::Base
     string :path
 
+    validates :path, presence: true
+
     # rubocop:disable Metrics/MethodLength
     def execute
       TagLib::MPEG::File.open(path) do |file|
