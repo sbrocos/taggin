@@ -8,7 +8,7 @@ gem 'cssbundling-rails'
 gem 'jsbundling-rails'
 gem 'pg', '~> 1.1'
 gem 'puma', '>= 5.0'
-gem 'rails', '~> 7.1.3'
+gem 'rails', '~> 7.2.1'
 gem 'redis', '>= 4.0.1'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
@@ -51,8 +51,10 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   gem 'rubocop-capybara', require: false
+  gem 'rubocop-factory_bot'
   gem 'rubocop-rails', '~> 2.23.1', require: false
   gem 'rubocop-rspec', require: false
+  gem 'rubocop-rspec_rails', require: false
 end
 
 group :test do
