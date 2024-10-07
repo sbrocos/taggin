@@ -2,7 +2,8 @@
 
 # Represents a album of a product.
 class Album < ApplicationRecord
-  has_one_attached :cover do |attachable|
+  has_one_attached :cover, dependent: :destroy do |attachable|
+    attachable.variant :player, resize: '80x80'
     attachable.variant :thumb, resize: '100x100'
     attachable.variant :medium, resize: '400x400'
   end
@@ -12,8 +13,5 @@ class Album < ApplicationRecord
 
   # Validations
   validates :title, :artist_name, presence: true
-  # validates :cover, attached: true
-  #                  content_type: %i[png jpeg],
-  #                  aspect_ratio: :square,
-  #                  dimension: { width: { min: 400, max: 1200 } }
+  validates :cover, presence: true
 end

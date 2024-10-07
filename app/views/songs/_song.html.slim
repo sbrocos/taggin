@@ -2,29 +2,38 @@
   div.bg-stone-100.p-6.mb-2
     = turbo_frame_tag dom_id(song, :edit) do
       h3.font-bold.text-lg
-        span.text-yellow-400 #{song.track_number}.
+        span.text-yellow-400 = format '%02d.', song.track_number
         span.ml-2 #{song.title}
-
       .text-sm.text-stone-600
         span = song.album.artist_name
         span.mx-2 -
         span = song.album.title
-
       - if !song.isrc.blank?
         p
           strong ISRC
           =< song.isrc
-
       - if !song.comment.blank?
         .my-2
           h5.text-stone-800.font-bold.text-xs Comment:
           =< song.comment
-
       - if !song.composer.blank?
         .my-2
           h5.text-stone-800.font-bold.text-xs Composer:
           =< song.composer
 
-      .text-end
-        => link_to 'Edit this song', edit_album_song_path(album, song),
-                class: 'bg-stone-200 hover:bg-stone-400 hover:text-white text-sm p-3'
+      .grid.grid-cols-2.mt-6
+        .mini-player.flex
+          button[type="button" data-action="sound#playPosition" data-sound-position-param='#{song.track_number - 1}' class="me-2 align-middle"]
+            svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"
+              path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z"
+
+          div
+            - if song.audio.attached?
+              span.text-sm = song.audio.blob.filename
+              audio[src="#{rails_blob_url(song.audio)}" data-sound-name="#{song.title}" data-sound-target="audios"]
+
+
+        .text-end
+          => link_to 'Edit this song', edit_album_song_path(album, song),
+                  class: 'bg-stone-200 hover:bg-stone-400 hover:text-white text-sm p-3'

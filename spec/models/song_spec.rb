@@ -5,18 +5,21 @@ require 'rails_helper'
 RSpec.describe Song do
   subject(:song) { create(:song, album:) }
 
-  let(:album) { create(:album, cover: file_fixture('cover.jpg')) }
+  let(:album) {  create(:album) }
 
-  # describe 'database columns' do
-  #   it do
-  #     expect(song).to have_db_column(:title).of_type(:string).with_options(null: false, default: '')
-  #     expect(song).to have_db_column(:isrc).of_type(:string).with_options(null: false, default: '')
-  #     expect(song).to have_db_column(:track_number).of_type(:integer).with_options(null: false, default: 0)
-  #     expect(song).to have_db_column(:disk_number).of_type(:integer).with_options(null: false, default: 1)
-  #     expect(song).to have_db_column(:comment).of_type(:string).with_options(null: false, default: '')
-  #     expect(song).to have_db_column(:composer).of_type(:string).with_options(null: false, default: '')
-  #   end
-  # end
+  # rubocop:disable RSpec/ExampleLength, RSpec/MultipleExpectations
+  describe 'database columns' do
+    it do
+      expect(song).to have_db_column(:title).of_type(:string).with_options(null: false, default: '')
+      expect(song).to have_db_column(:isrc).of_type(:string).with_options(null: false, default: '')
+      expect(song).to have_db_column(:track_number).of_type(:integer).with_options(null: false, default: 0)
+      expect(song).to have_db_column(:disk_number).of_type(:integer).with_options(null: false, default: 1)
+      expect(song).to have_db_column(:comment).of_type(:string).with_options(null: false, default: '')
+      expect(song).to have_db_column(:composer).of_type(:string).with_options(null: false, default: '')
+    end
+  end
+  # rubocop:enable RSpec/ExampleLength, RSpec/MultipleExpectations
+
   describe 'associations' do
     it do
       expect(song).to belong_to('album')
@@ -27,11 +30,13 @@ RSpec.describe Song do
     it { is_expected.to have_one_attached(:audio) }
   end
 
-  describe 'validates' do
-    it do
-      expect(album).to validate_presence_of(:title)
-      expect(album).to validate_presence_of(:artist_name)
-    end
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:title) }
+    expect(album).to validate_presence_of(:artist_name)
+  end
+
+  describe 'delegations' do
+    it { is_expected.to delegate_method(:artist_name).to(:album) }
   end
 
   describe '#ordered' do
@@ -73,6 +78,18 @@ RSpec.describe Song do
 
     it 'returns song with track number 2 of the same album and same disk' do
       expect(previous).to eq(song2)
+    end
+  end
+
+  describe 'initialize' do
+    subject(:year) { song.year }
+
+    let(:album) { create(:album, release_date: '2023/06/30'.to_datetime) }
+
+    context 'when don\'t define the year' do
+      it 'returns the year of the release_date of album' do
+        expect(year).to eq 2023
+      end
     end
   end
 end

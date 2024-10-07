@@ -8,6 +8,7 @@ RSpec.shared_context 'with interactions' do
     described_class.run(inputs)
   end
   let(:result) { outcome.result }
+  let(:errors) { outcome.errors.messages }
 end
 
 RSpec.configure do |rspec|

@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+.bg-blacky {
+    background: #343434;
+}
 
 .cover-container {
     height: 400px;
@@ -9,6 +12,16 @@
     background: #F7F7F7;
 }
 
-/*[type=submit].bg-stone-800 {*/
-/*    background: initial;*/
-/*}*/
+audio::-webkit-media-controls-panel {
+    background-color: #fafafa;
+    border-radius: 0;
+}
+
+audio::-webkit-media-controls-play-button {
+    background-color: #FFF;
+    border-radius: 50%;
+}
+
+audio::-webkit-media-controls-play-button:hover {
+    background-color: rgba(0,0,0, .4);
+}

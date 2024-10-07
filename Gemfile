@@ -27,8 +27,10 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 
 gem 'active_interaction', '~> 5.3'
 gem 'active_storage_validations'
+gem 'activestorage-validator'
 gem 'bootsnap', require: false
 gem 'image_processing', '~> 1.2'
+gem 'taglib-ruby', '~> 1.1.3'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

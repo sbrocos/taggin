@@ -16,9 +16,7 @@ RSpec.describe Album do
   end
 
   describe 'associations' do
-    it do
-      expect(album).to have_many(:songs)
-    end
+    it { expect(album).to have_many(:songs) }
   end
 
   describe 'validates' do
