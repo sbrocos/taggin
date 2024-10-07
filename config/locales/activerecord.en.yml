@@ -1,0 +1,14 @@
+en:
+  activerecord:
+    attributes:
+      album:
+        artist_name: Artist Name
+        label: Label
+        release_date: Release date
+        title: Title
+        upc: UPC
+      song:
+        disk_number: Disk Number
+        isrc: ISRC
+        title: Title
+        track_number: Track Number
