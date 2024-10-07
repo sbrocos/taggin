@@ -3,6 +3,7 @@ require:
   - rubocop-factory_bot
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-rspec_rails
 
 AllCops:
   TargetRubyVersion: 3.3
@@ -58,12 +59,17 @@ Rails/SkipsModelValidations:
   Exclude:
     - 'db/migrate/*.rb'
 
+RSpec/ExampleLength:
+  Max: 10
+
 RSpec/IndexedLet:
   Exclude:
     - 'spec/models/song_spec.rb'
 
 RSpec/MultipleExpectations:
   Max: 5
+  Exclude:
+    - 'spec/views/**/*'
 
 RSpec/MultipleMemoizedHelpers:
   Max: 6

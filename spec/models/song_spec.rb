@@ -7,7 +7,6 @@ RSpec.describe Song do
 
   let(:album) { create(:album, cover: file_fixture('cover.jpg')) }
 
-  # rubocop:disable RSpec/ExampleLength, RSpec/MultipleExpectations
   # describe 'database columns' do
   #   it do
   #     expect(song).to have_db_column(:title).of_type(:string).with_options(null: false, default: '')
@@ -18,8 +17,6 @@ RSpec.describe Song do
   #     expect(song).to have_db_column(:composer).of_type(:string).with_options(null: false, default: '')
   #   end
   # end
-  # rubocop:enable RSpec/ExampleLength, RSpec/MultipleExpectations
-
   describe 'associations' do
     it do
       expect(song).to belong_to('album')
@@ -27,7 +24,7 @@ RSpec.describe Song do
   end
 
   describe 'attachments' do
-    it { should have_one_attached(:audio) }
+    it { is_expected.to have_one_attached(:audio) }
   end
 
   describe 'validates' do
@@ -39,7 +36,6 @@ RSpec.describe Song do
 
   describe '#ordered' do
     subject(:ordered) { described_class.ordered }
-
 
     context 'when have only one disc' do
       let(:song1) { create(:song, track_number: 1, album:) }

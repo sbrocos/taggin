@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'active_storage/engine'
 require 'active_storage_validations/matchers'
 
