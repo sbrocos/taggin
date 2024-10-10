@@ -42,7 +42,7 @@ class SongsController < ApplicationController
   # DELETE /songs/1
   def destroy
     @song.destroy!
-    redirect_to songs_url, notice: t('priavet.songs.destroyed'), status: :see_other
+    redirect_to songs_url, notice: t('private.songs.destroyed'), status: :see_other
   end
 
   private
