@@ -89,8 +89,6 @@ export default class extends Sound {
 	}
 
 	#setSong(){
-		window.audios = this.audiosTargets
-		window.position = this.position
 		this.sound = new Audio(this.audiosTargets[this.position].src)
 	}
 
