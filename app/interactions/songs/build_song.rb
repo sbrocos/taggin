@@ -17,7 +17,7 @@ module Songs
     private
 
     def new_track_number
-      return 1 if @album.songs.empty?
+      return 1 if @album.songs.count.zero?
 
       @album.songs.ordered.last.track_number + 1
     end

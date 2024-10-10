@@ -1,0 +1,27 @@
+p style="color: green" = notice
+
+h1.text-3xl.font-bold.text-stone-800.mb-8 =< @album.title
+
+div[data-controller="sound" ]
+  .text-end.mb-5
+    = link_to "Back to albums", you_albums_path, class: 'bg-stone-800 text-stone-100 p-2 hover:bg-stone-600 p-3 mb-3 mr-3'
+    = link_to new_you_album_song_path(@album),
+            data: { turbo_frame: dom_id(::Songs::BuildSong.run(album: @album).result) },
+            class: 'bg-stone-800 text-stone-100 p-2 hover:bg-green-700 p-3 mb-3' do
+      svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline-block"
+        path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"
+      span New Song
+
+  .grid class="grid-cols-[30%_70%]"
+    .column.bg-stone-800.text-stone-100.mb-2
+      == render @album
+      .actions.mt-5.text-center
+        => link_to "Edit this album", edit_you_album_path(@album), class: 'underline-offset-1 hover:underline p-2'
+        '|
+        = button_to "Destroy this album", [:you, @album], method: :delete, class: 'inline-block underline-offset-1 hover:underline hover:text-red-600 p-2', form_class: 'inline-block'
+    .column.pl-10
+      = turbo_frame_tag ::Songs::BuildSong.run(album: @album).result
+      = turbo_frame_tag 'songs' do
+        = render @album.songs.ordered, album: @album
+
+  == render 'shared/player'

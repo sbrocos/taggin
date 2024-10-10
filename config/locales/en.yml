@@ -25,7 +25,17 @@ en:
       aspect_ratio_is_not: "must have an aspect ratio of %{aspect_ratio}"
       aspect_ratio_unknown: "has an unknown aspect ratio"
       image_not_processable: "is not a valid image"
-  private:
+
+  navbar:
+    albums: albums
+    loggin: log in
+
+  public:
+    albums:
+      index:
+        title: Albums
+
+  you:
     albums:
       created: Album was successfully created.
       destroyed: Album was successfully destroyed.

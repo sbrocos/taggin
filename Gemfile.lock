@@ -230,6 +230,8 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
+    rails_state_machine (3.0.0)
+      activerecord
     railties (7.2.1)
       actionpack (= 7.2.1)
       activesupport (= 7.2.1)
@@ -399,6 +401,7 @@ DEPENDENCIES
   pry-rails
   puma (>= 5.0)
   rails (~> 7.2.1)
+  rails_state_machine
   redis (>= 4.0.1)
   rspec-rails (~> 6.0)
   rubocop

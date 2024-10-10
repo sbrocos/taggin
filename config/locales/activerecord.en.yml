@@ -8,6 +8,8 @@ en:
         title: Title
         upc: UPC
       song:
+        comment: Comment
+        composer: Composer
         disk_number: Disk Number
         isrc: ISRC
         title: Title

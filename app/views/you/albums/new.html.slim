@@ -1,14 +1,9 @@
 .flex.flex-shrink
   .lg:flex-grow
-    h1.text-3xl.font-bold.text-stone-600.text-stone-600.relative.top-2 = t('private.releases.edit.title')
+    h1.text-3xl.font-bold.text-stone-600.text-stone-600.relative.top-2 = t('you.albums.new.title')
   .flex.block.text-end.border-t.inline-block.align-middle.mt-2
     = link_to "Back to Albums", :back, class: 'bg-stone-800 text-stone-100 p-2 hover:bg-red-400'
 
+.mb-5
 == render "form", album: @album
 
-br
-
-div
-  => link_to "Show this album", @album
-  '|
-  =< link_to "Back to albums", albums_path

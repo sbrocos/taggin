@@ -10,15 +10,15 @@
         span = song.album.title
       - if !song.isrc.blank?
         p
-          strong ISRC
+          strong = t('activerecord.attributes.song.isrc') + ':'
           =< song.isrc
       - if !song.comment.blank?
         .my-2
-          h5.text-stone-800.font-bold.text-xs Comment:
+          h5.text-stone-800.font-bold.text-xs = t('activerecord.attributes.song.comment') + ':'
           =< song.comment
       - if !song.composer.blank?
         .my-2
-          h5.text-stone-800.font-bold.text-xs Composer:
+          h5.text-stone-800.font-bold.text-xs = t('activerecord.attributes.song.composer') + ':'
           =< song.composer
 
       .grid.grid-cols-2.mt-6
@@ -35,5 +35,5 @@
 
 
         .text-end
-          => link_to 'Edit this song', edit_album_song_path(album, song),
+          => link_to 'Edit this song', edit_you_album_song_path(album, song),
                   class: 'bg-stone-200 hover:bg-stone-400 hover:text-white text-sm p-3'

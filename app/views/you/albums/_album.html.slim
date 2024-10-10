@@ -1,18 +1,19 @@
 .cover.mb-4
   - if album.cover.attached? && album.cover.attachment.blob.present? && album.cover.attachment.blob.persisted?
     = image_tag album.cover.variant(:medium)
+
 .info.bg-stone-800.text-stone-100.py-2.px-4
   .grid.grid-cols-2
-    .text-sm.font-bold UPC
+    .text-sm.font-bold = t('activerecord.attributes.album.upc')
     - if album.upc.empty?
       .text-end  --
     - else
       .text-end =< album.upc
-    .text-sm.font-bold Artist Name
+    .text-sm.font-bold = t('activerecord.attributes.album.artist_name')
     .text-end = album.artist_name
-    .text-sm.font-bold Label
+    .text-sm.font-bold = t('activerecord.attributes.album.label')
     .text-end = album.label
-    .text-sm.font-bold Release data
+    .text-sm.font-bold = t('activerecord.attributes.album.release_date')
     - if album.release_date.nil?
       .text-sm.text-end --/--/----
     - else

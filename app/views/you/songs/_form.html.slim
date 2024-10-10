@@ -1,4 +1,4 @@
-= simple_form_for [@album, @song] do |f|
+= simple_form_for [:you, @album, @song] do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
@@ -15,5 +15,5 @@
     p.mt-1.text-sm.text-gray-500.dark:text-gray-300 File uploaded: #{@song.audio&.blob&.filename || ''}
 
   .text-end.mt-5
-    = link_to 'Cancel', @album, class: 'inline-block my-2 bg-stone-200 hover:bg-red-600 hover:text-white text-sm py-2 px-4 p-3 mr-3'
+    = link_to 'Cancel', [:you, @album], class: 'inline-block my-2 bg-stone-200 hover:bg-red-600 hover:text-white text-sm py-2 px-4 p-3 mr-3'
     = f.button :button, as: :submit, class: 'p-3'

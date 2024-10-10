@@ -1,0 +1,16 @@
+.cover.mb-4
+  - if album.cover.attached? && album.cover.attachment.blob.present? && album.cover.attachment.blob.persisted?
+    = image_tag album.cover.variant(:medium)
+
+.info.bg-stone-800.text-stone-100.py-2.px-4
+  .grid.grid-cols-2
+    .text-sm.font-bold = t('activerecord.attributes.album.artist_name')
+    .text-end = album.artist_name
+    - if album.label.present?
+      .text-sm.font-bold = t('activerecord.attributes.album.label')
+      .text-end = album.label
+    .text-sm.font-bold = t('activerecord.attributes.album.release_date')
+    - if album.release_date.nil?
+      .text-sm.text-end --/--/----
+    - else
+      .text-sm.text-end =< album.release_date.to_fs(:short_date)

@@ -1,4 +1,4 @@
-= simple_form_for(@album, multipart: true) do |form|
+= simple_form_for([:you, @album], multipart: true) do |form|
   - if album.errors.any?
     div.mb-5 style="color: red"
       h2 = "#{pluralize(album.errors.count, "error")} prohibited this album from being saved:"
