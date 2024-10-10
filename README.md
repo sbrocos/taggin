@@ -5,9 +5,13 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+### Ruby version
+3.3.0 (defined in .ruby-version file)
 
-* System dependencies
+## System dependencies
+
+ You need to install tablib https://github.com/robinst/taglib-ruby
+
 
 * Configuration
 
