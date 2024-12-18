@@ -2,13 +2,13 @@
   .lg:flex-grow
     h1.text-3xl.font-bold.text-stone-600.text-stone-600.relative.top-2 = t('you.albums.edit.title')
   .flex.block.text-end.border-t.inline-block.align-middle.mt-2
-    = link_to "Back to Albums", :back, class: 'bg-stone-800 text-stone-100 p-2 hover:bg-red-400'
+    = link_to 'Back to Albums', :back, class: 'bg-stone-800 text-stone-100 p-2 hover:bg-red-400'
 
-== render "form", album: @album
+== render 'you/albums/form', album: @album
 
 br
 
 div
-  => link_to "Show this album", [:you, @album]
+  => link_to 'Show this album', [:you, @album]
   '|
-  =< link_to "Back to albums", you_albums_path
+  =< link_to 'Back to albums', you_albums_path

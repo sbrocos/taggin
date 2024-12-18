@@ -9,6 +9,6 @@ p style="color: green" = notice
 #albums.grid.grid-cols-3.gap-5
   - @albums.each do |album|
     .bg-stone-800.text-stone-100 id="#{dom_id album}"
-      == render album
+      == render 'you/albums/album', album: album
       .mt-5.text-center
         = link_to "Show this album", [:you, album], class: 'block p-3 hover:bg-stone-700'

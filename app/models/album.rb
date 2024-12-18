@@ -13,5 +13,12 @@ class Album < ApplicationRecord
 
   # Validations
   validates :title, :artist_name, presence: true
-  validates :cover, presence: true
+  # validates :cover, presence: true
+  validates :cover, attached: true,
+    content_type: ['image/png', 'image/jpeg', 'image/gif'],
+    aspect_ratio: :square,
+    dimension: { 
+      width: { min: 400, max: 1200 },
+      height: { min: 400, max: 1200 }
+    }
 end

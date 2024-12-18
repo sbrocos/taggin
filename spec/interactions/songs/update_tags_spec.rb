@@ -8,8 +8,10 @@ RSpec.describe Songs::UpdateTags, type: :interaction do
     let(:inputs) { { path: } }
 
     context 'when don\'t exist songs previously' do
+      let(:inputs) { { path: '' } }
+
       it 'returns something' do
-        expect(result).to eq(1)
+        expect(errors).to eq({ song: ['is required'] })
       end
     end
   end

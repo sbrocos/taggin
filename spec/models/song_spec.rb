@@ -31,8 +31,10 @@ RSpec.describe Song do
   end
 
   describe 'validations' do
-    it { is_expected.to validate_presence_of(:title) }
-    expect(album).to validate_presence_of(:artist_name)
+    it do
+      is_expected.to validate_presence_of(:title)
+      expect(album).to validate_presence_of(:artist_name)
+    end
   end
 
   describe 'delegations' do

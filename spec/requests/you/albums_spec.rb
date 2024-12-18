@@ -14,9 +14,9 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe '/songs' do
+RSpec.describe '/you/albums' do
   # This should return the minimal set of attributes required to create a valid
-  # Song. As you add validations to Song, be sure to
+  # Album. As you add validations to Album, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
     skip('Add a hash of attributes valid for your model')
@@ -28,58 +28,58 @@ RSpec.describe '/songs' do
 
   describe 'GET /index' do
     it 'renders a successful response' do
-      Song.create! valid_attributes
-      get songs_url
+      Album.create! valid_attributes
+      get you_albums_url
       expect(response).to be_successful
     end
   end
 
   describe 'GET /show' do
     it 'renders a successful response' do
-      song = Song.create! valid_attributes
-      get song_url(song)
+      release = Album.create! valid_attributes
+      get you_album_url(release)
       expect(response).to be_successful
     end
   end
 
   describe 'GET /new' do
     it 'renders a successful response' do
-      get new_song_url
+      get new_you_album_url
       expect(response).to be_successful
     end
   end
 
   describe 'GET /edit' do
     it 'renders a successful response' do
-      song = Song.create! valid_attributes
-      get edit_song_url(song)
+      release = Album.create! valid_attributes
+      get edit_you_album_url(release)
       expect(response).to be_successful
     end
   end
 
   describe 'POST /create' do
     context 'with valid parameters' do
-      it 'creates a new Song' do
+      it 'creates a new Album' do
         expect do
-          post songs_url, params: { song: valid_attributes }
-        end.to change(Song, :count).by(1)
+          post you_albums_url, params: { album: valid_attributes }
+        end.to change(Album, :count).by(1)
       end
 
-      it 'redirects to the created song' do
-        post songs_url, params: { song: valid_attributes }
-        expect(response).to redirect_to(song_url(Song.last))
+      it 'redirects to the created release' do
+        post you_albums_url, params: { album: valid_attributes }
+        expect(response).to redirect_to(you_album_url(Album.last))
       end
     end
 
     context 'with invalid parameters' do
-      it 'does not create a new Song' do
+      it 'does not create a new Album' do
         expect do
-          post songs_url, params: { song: invalid_attributes }
-        end.not_to change(Song, :count)
+          post you_albums_url, params: { album: invalid_attributes }
+        end.not_to change(Album, :count)
       end
 
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post songs_url, params: { song: invalid_attributes }
+        post you_albums_url, params: { album: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
@@ -91,42 +91,42 @@ RSpec.describe '/songs' do
         skip('Add a hash of attributes valid for your model')
       end
 
-      it 'updates the requested song' do
-        song = Song.create! valid_attributes
-        patch song_url(song), params: { song: new_attributes }
-        song.reload
+      it 'updates the requested release' do
+        release = Album.create! valid_attributes
+        patch you_album_url(release), params: { album: new_attributes }
+        release.reload
         skip('Add assertions for updated state')
       end
 
-      it 'redirects to the song' do
-        song = Song.create! valid_attributes
-        patch song_url(song), params: { song: new_attributes }
-        song.reload
-        expect(response).to redirect_to(song_url(song))
+      it 'redirects to the release' do
+        release = Album.create! valid_attributes
+        patch you_album_url(release), params: { album: new_attributes }
+        release.reload
+        expect(response).to redirect_to(you_album_url(release))
       end
     end
 
     context 'with invalid parameters' do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        song = Song.create! valid_attributes
-        patch song_url(song), params: { song: invalid_attributes }
+        release = Album.create! valid_attributes
+        patch you_album_url(release), params: { album: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end
 
   describe 'DELETE /destroy' do
-    it 'destroys the requested song' do
-      song = Song.create! valid_attributes
+    it 'destroys the requested release' do
+      release = Album.create! valid_attributes
       expect do
-        delete song_url(song)
-      end.to change(Song, :count).by(-1)
+        delete you_album_url(release)
+      end.to change(Album, :count).by(-1)
     end
 
-    it 'redirects to the songs list' do
-      song = Song.create! valid_attributes
-      delete song_url(song)
-      expect(response).to redirect_to(songs_url)
+    it 'redirects to the albums list' do
+      release = Album.create! valid_attributes
+      delete you_album_url(release)
+      expect(response).to redirect_to(you_albums_url)
     end
   end
 end
