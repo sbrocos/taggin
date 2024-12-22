@@ -8,7 +8,7 @@ gem 'cssbundling-rails'
 gem 'jsbundling-rails'
 gem 'pg', '~> 1.1'
 gem 'puma', '>= 5.0'
-gem 'rails', '~> 7.2.1'
+gem 'rails', '~> 8.0.0'
 gem 'redis', '>= 4.0.1'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
@@ -40,7 +40,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker'
   gem 'pry-rails'
-  gem 'rspec-rails', '~> 6.0'
+  gem 'rspec-rails', '~> 7.0'
 end
 
 group :development do
@@ -55,7 +55,7 @@ group :development do
   gem 'rubocop', require: false
   gem 'rubocop-capybara', require: false
   gem 'rubocop-factory_bot', require: false
-  gem 'rubocop-rails', '~> 2.23.1', require: false
+  gem 'rubocop-rails', '~> 2.27.0', require: false
   gem 'rubocop-rspec', require: false
   gem 'rubocop-rspec_rails', require: false
 end
@@ -64,6 +64,6 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'shoulda-matchers', '5.3'
+  gem 'shoulda-matchers', '~> 6.4'
   gem 'simplecov', require: false
 end
