@@ -1,0 +1,17 @@
+= simple_form_for :user, url: passwords_path, method: :post do |f|
+  = render "shared/error_messages", resource: @user
+
+  .grid.grid-cols-2.bg-stone-700
+    .fields.pt-5
+    .fields.pt-5.p-10.text-white
+      div
+        h1.mb-12 Passwords#new
+        = f.input :email_address, require: true, autofocus: true, autocomplete: 'email',
+                input_html: { class: 'w-full' },
+                label_html: { class: 'block mb-2' },
+                wrapper_html: { class: 'mb-5'}
+
+      .border-t-1.border-white.mt-15.text-end
+
+      .text-end.mt-10
+        = f.submit 'reset password', class: 'bg-stone-600 text-stone-100 p-2 hover:bg-stone-400 px-5 py-3 cursor-pointer'

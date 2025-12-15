@@ -3,6 +3,7 @@
 module Public
   # Controller class to CRUD actions of Ablums
   class AlbumsController < ApplicationController
+    allow_unauthenticated_access
     before_action :set_album, only: :show
 
     # GET /albums

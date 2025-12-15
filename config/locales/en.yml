@@ -1,4 +1,14 @@
 en:
+  authentication:
+    passwords:
+      create:
+        failure: "Don't exist any account with this email address \"%{email}\"."
+        success: "Password reset instructions sent you to your email address \"%{email}\"."
+    registrations:
+      create:
+        failure:
+        success: Successfully signed up!
+
   errors:
     messages:
       content_type_invalid: "has an invalid content type"
@@ -25,10 +35,12 @@ en:
       aspect_ratio_is_not: "must have an aspect ratio of %{aspect_ratio}"
       aspect_ratio_unknown: "has an unknown aspect ratio"
       image_not_processable: "is not a valid image"
+      not_saved: 'Error(s) prohibited it from being saved:'
 
   navbar:
     albums: albums
     loggin: log in
+    sign_up: sign up
 
   public:
     albums:

@@ -72,6 +72,7 @@ RSpec.describe Song do
 
     before do
       song2
+      binding.pry
       create(:song, track_number: 1, album:)
       create(:song, track_number: 1, album:)
       create(:song, track_number: 2, album:, disk_number: 2)

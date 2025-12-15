@@ -4,6 +4,8 @@
 
 .info.bg-stone-800.text-stone-100.py-2.px-4
   .grid.grid-cols-2
+    .text-sm.font-bold = t('activerecord.attributes.album.title')
+    .text-end = album.title
     .text-sm.font-bold = t('activerecord.attributes.album.artist_name')
     .text-end = album.artist_name
     - if album.label.present?

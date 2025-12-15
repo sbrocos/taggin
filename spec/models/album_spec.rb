@@ -30,7 +30,7 @@ RSpec.describe Album do
     it { is_expected.to validate_attached_of(:cover) }
     it { is_expected.to validate_aspect_ratio_of(:cover).allowing(:square) }
     it { is_expected.to validate_dimensions_of(:cover).width_min(400) }
-    it { is_expected.to validate_dimensions_of(:cover).width_max(1200) }
+    it { is_expected.to validate_dimensions_of(:cover).width_max(3000) }
     it { is_expected.to validate_content_type_of(:cover).allowing('image/png', 'image/jpeg', 'image/gif') }
   end
 end

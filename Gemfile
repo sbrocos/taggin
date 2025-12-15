@@ -4,17 +4,17 @@ source 'https://rubygems.org'
 
 ruby '3.3.0'
 
+gem 'rails', '~> 7.2.1'
 gem 'cssbundling-rails'
 gem 'jsbundling-rails'
 gem 'pg', '~> 1.1'
 gem 'puma', '>= 5.0'
-gem 'rails', '~> 8.0.0'
 gem 'redis', '>= 4.0.1'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
-# gem "kredis"
-# gem "bcrypt", "~> 3.1.7"
+gem 'kredis', '~> 1.7.0'
+gem 'bcrypt', '~> 3.1.7'
 
 gem 'slim-rails', '~> 3.6'
 gem 'tailwindcss-rails'
@@ -52,6 +52,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'letter_opener'
   gem 'rubocop', require: false
   gem 'rubocop-capybara', require: false
   gem 'rubocop-factory_bot', require: false

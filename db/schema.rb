@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_07_161549) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_22_122125) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -29,10 +29,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_07_161549) do
     t.string "filename", null: false
     t.string "content_type"
     t.text "metadata"
-    t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
     t.datetime "created_at", null: false
+    t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -52,6 +52,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_07_161549) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "ip_address"
+    t.string "user_agent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
   create_table "songs", force: :cascade do |t|
     t.bigint "album_id", null: false
     t.string "title", default: "", null: false
@@ -66,7 +75,22 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_07_161549) do
     t.index ["album_id"], name: "index_songs_on_album_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email_address", null: false
+    t.string "password_digest", null: false
+    t.string "username", default: "", null: false
+    t.string "artistic_name", default: "", null: false
+    t.string "composer_name", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index "lower((email_address)::text)", name: "index_users_on_lower_email_address", unique: true
+    t.index "lower((username)::text)", name: "index_users_on_lower_username", unique: true
+    t.index ["artistic_name"], name: "index_users_on_artistic_name"
+    t.index ["composer_name"], name: "index_users_on_composer_name"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "sessions", "users"
   add_foreign_key "songs", "albums"
 end

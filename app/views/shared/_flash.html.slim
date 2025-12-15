@@ -1,3 +1,5 @@
-- flash.each do |flash_type, message|
-  div class="flash__message" data-controller="removals" data-action="animationend->removals#remove"
-    = message
+.bg-stone-700.text-white
+  .container.mx-auto.max-w-7xl.px-4.sm:px-6.sm:py-12.lg:px-8
+    - flash.each do |flash_type, message|
+      div class="p-3" data-controller="removals" data-action="animationend->removals#remove"
+        = message

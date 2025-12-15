@@ -22,7 +22,7 @@ class Song < ApplicationRecord
   validates :audio, blob: { content_type: %w[audio/mpeg] }
 
   def previous
-    album.songs.ordered.where('track_number < ?', track_number).where(disk_number:).last
+    album.songs.ordered.where(track_number: ...track_number).where(disk_number:).last
   end
 
   private

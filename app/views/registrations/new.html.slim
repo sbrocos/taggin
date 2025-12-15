@@ -1,0 +1,16 @@
+h1 Registrations#new
+
+= simple_form_for @user, url: signup_path do |f|
+  = render "error_messages", resource: @user
+
+  .grid.grid-cols-2.gap-3
+    .fields.pt-5
+      = f.input :email_address, require: true, autofocus: true, autocomplete: 'email', input_html: { class: 'w-full' },
+                label_html: { class: 'block' },
+                wrapper_html: { class: 'mb-5'}
+      = f.input :username, require: true
+      = f.input :password, require: true, autocomplete: 'new_password'
+      = f.input :password_confirmation, require: true, autocomplete: 'new_password'
+      .text-end
+        = f.submit 'Sign up', class: 'bg-stone-800 text-stone-100 p-2 hover:bg-stone-400 px-5 py-3 cursor-pointer'
+
